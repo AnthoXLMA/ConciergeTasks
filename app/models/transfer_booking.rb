@@ -1,0 +1,2 @@
+class TransferBooking < ApplicationRecord
+end

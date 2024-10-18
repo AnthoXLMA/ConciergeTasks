@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: 2024-10-18
+  numberofguest: 1
+  guestname: MyString
+  typeofreservation: MyString
+  tablebookingtime: 2024-10-18 14:19:59
+  restaurantname: MyString
+
+two:
+  day: 2024-10-18
+  numberofguest: 1
+  guestname: MyString
+  typeofreservation: MyString
+  tablebookingtime: 2024-10-18 14:19:59
+  restaurantname: MyString

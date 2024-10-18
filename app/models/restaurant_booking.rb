@@ -1,0 +1,2 @@
+class RestaurantBooking < ApplicationRecord
+end
