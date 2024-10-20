@@ -1,0 +1,19 @@
+<h1><%= @restaurant.restaurant_name %></h1>
+
+<div class="container-resto" style="background-color: orange; width: 500px; height: 200px">
+
+
+<h2>Réserver</h2>
+<h2><%= link_to 'Home', root_path %></h2>
+
+</div>
+
+
+<div class="container">
+  <%= simple_form_for [@restaurant] do |f| %>
+    <div class="container_one">
+      <%= f.input :restaurant_name %>
+      <%= f.submit "Book", class: "btn btn-ghost rent" %>
+    </div>
+  <% end %>
+</div>

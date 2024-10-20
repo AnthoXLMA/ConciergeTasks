@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+puts "Deleting Restaurants"
+Restaurant.delete_all
+
+puts 'Creating Restaurants...'
+@filepath = "./db/fixtures/restaurants.json"
+@serialized_restaurants = File.read(@filepath)
+@restaurants = JSON.parse(@serialized_restaurants)
+@restos = []
+@restaurants.each do |row|
+  @restos << Restaurant.create!(restaurant_name: row['restaurant_name'])
+end
