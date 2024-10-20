@@ -1,6 +1,26 @@
 [
-{"restaurant_name":"La Marine"},
-{"restaurant_name":"Monaco Sunset"},
-{"restaurant_name":"Le Botaniste"},
-{"restaurant_name":"Le Petit Jardin"}
+  {
+    "restaurant_name":"La Marine",
+    "location_id":"1",
+    "city": "Port en Bessin"
+  },
+
+  {
+  "restaurant_name":"Monaco Sunset",
+  "location_id":"2",
+  "city": "Monaco"
+  },
+
+  {
+  "restaurant_name":"Le Botaniste",
+  "location_id":"3",
+  "city": "Bayeux"
+  },
+
+  {
+  "restaurant_name":"Le Petit Jardin",
+  "location_id":"3",
+  "city": "Bayeux"
+  }
+
 ]

@@ -1,3 +1,6 @@
 <% @restaurants.each do | restaurant | %>
-  <p><%= link_to restaurant.restaurant_name, restaurant %></p>
+  <p><%= restaurant.city %>
+    - <%= link_to restaurant.restaurant_name, restaurant %>
+    - <%= link_to "Réserver", new_restaurant_booking_path(restaurant) %>
+  </p>
 <% end %>

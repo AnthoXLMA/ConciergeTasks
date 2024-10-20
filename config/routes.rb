@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'tasks/index'
+  get 'tasks/new'
+  get 'tasks/create'
+  get 'tasks/show'
+  get 'locations/index'
+  get 'concierges/index'
+  get 'categories/index'
+  get 'guests/index'
   get 'bookings/index'
   get 'bookings/new'
   get 'bookings/show'
@@ -16,11 +24,14 @@ Rails.application.routes.draw do
   get "/concierge" => "pages#concierge_home"
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :restaurant_bookings, only: [:index, :new, :create, :show];
+  # resources :restaurant_bookings, only: [:index, :new, :create, :show]
+  resources :restaurants, only: [:index, :show]
+  resources :categories, only: [:index]
+  resources :guests, only: [:index, :show]
+  resources :locations, only: [:index]
+  resources :tasks, only: [:index, :show, :new, :create, :destroy]
 
-  resources :restaurants, only: [:index, :show, :new, :create, :destroy]
-
-  resources :restaurants, only: [:index, :new, :create, :destroy] do
-    resources :bookings, only: [:index, :new, :create, :destroy]
+  resources :restaurants, only: [:index] do
+    resources :bookings, only: [:index, :new, :create, :show]
   end
 end
