@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_18_124127) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_20_104459) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "activity_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "activity_bookings", force: :cascade do |t|
     t.date "dayofactivity"
@@ -21,6 +27,25 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_124127) do
     t.string "activityname"
     t.text "description"
     t.text "addons"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "starts_at"
+    t.string "ends_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "concierge_id", null: false
+    t.bigint "restaurant_id", null: false
+    t.index ["concierge_id"], name: "index_bookings_on_concierge_id"
+    t.index ["restaurant_id"], name: "index_bookings_on_restaurant_id"
+  end
+
+  create_table "concierges", force: :cascade do |t|
+    t.string "firstname"
+    t.text "lastname"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,6 +67,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_124127) do
     t.string "restaurantname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "concierge_id", null: false
+    t.bigint "restaurant_id", null: false
+    t.index ["concierge_id"], name: "index_restaurant_bookings_on_concierge_id"
+    t.index ["restaurant_id"], name: "index_restaurant_bookings_on_restaurant_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "restaurant_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transfer_bookings", force: :cascade do |t|
@@ -57,4 +92,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_124127) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bookings", "concierges"
+  add_foreign_key "bookings", "restaurants"
+  add_foreign_key "restaurant_bookings", "concierges"
+  add_foreign_key "restaurant_bookings", "restaurants"
 end
